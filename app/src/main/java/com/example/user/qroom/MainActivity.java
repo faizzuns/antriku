@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import com.example.user.qroom.adapter.CategoryAdapter;
 import com.example.user.qroom.data.Category;
 import com.example.user.qroom.listener.CategoryListener;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements CategoryListener 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setTitle("Antriku");
+        FlowManager.init(new FlowConfig.Builder(this).build());
 
         //tentang rv Category
         rvCategory.setHasFixedSize(true);

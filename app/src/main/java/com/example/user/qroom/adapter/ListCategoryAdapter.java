@@ -27,7 +27,7 @@ public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapte
     ArrayList<Place> listPlace;
     ListCategoryListener listCategoryListener;
 
-    public ListCategoryAdapter(ArrayList<Place> listPlace, ListCategoryListener listCategoryListener) {
+    public ListCategoryAdapter(ArrayList<Place> listPlace, ListCategoryListener listCategoryListener){
         this.listPlace = listPlace;
         this.listCategoryListener = listCategoryListener;
     }
