@@ -73,6 +73,4 @@ public class APICallLib {
             }
         });
     }
-
-    public static void getPlace()
 }

@@ -10,19 +10,29 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.user.qroom.R;
+import com.example.user.qroom.listener.OnReceiveCode;
 import com.google.firebase.messaging.RemoteMessage;
 
 /**
  * Created by denail on 17/08/13.
  */
 
-public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+
+    private static OnReceiveCode listener;
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        showNotification(
-                remoteMessage.getData().get("antrian_numb"),
-                remoteMessage.getData().get("antrian_code")
-        );
+        String antrianNumb = remoteMessage.getData().get("antrian_numb");
+        String antrianCode = remoteMessage.getData().get("antrian_code");
+        showNotification(antrianNumb, antrianCode);
+        if(listener != null) {
+            listener.onReceive(antrianNumb, antrianCode);
+        }
+    }
+
+    public static void setListener(OnReceiveCode newListener) {
+        listener = newListener;
     }
 
     private void showNotification(String antrianNumb, String antrianCode) {
